@@ -19,6 +19,7 @@ import monologue.Logged;
 import monologue.Monologue;
 import org.littletonrobotics.urcl.URCL;
 import robot.Ports.OI;
+import robot.drive.Drive;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
