@@ -272,6 +272,7 @@ public final class FaultLogger {
         (f, d) -> register((BooleanSupplier) f, "Talon ID: " + id, d, FaultType.ERROR);
 
     // TODO: Remove all the unnecessary faults
+    // TODO: Just do this at the end
     regFault.accept(talon.getFault_Hardware(), "Hardware fault occurred");
     regFault.accept(talon.getFault_ProcTemp(), "Processor temperature exceeded limit");
     regFault.accept(talon.getFault_Hardware(), "Hardware fault occurred");
