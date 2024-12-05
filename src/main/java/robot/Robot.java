@@ -29,7 +29,6 @@ import robot.drive.Drive;
  */
 public class Robot extends CommandRobot implements Logged {
   // INPUT DEVICES
-  private final CommandXboxController operator = new CommandXboxController(OI.OPERATOR);
   private final CommandXboxController driver = new CommandXboxController(OI.DRIVER);
 
   private final PowerDistribution pdh = new PowerDistribution();
@@ -83,18 +82,11 @@ Drive drive = new Drive();
    * @return The command to rumble both controllers.
    */
   public Command rumble(RumbleType rumbleType, double strength) {
-    return Commands.runOnce(
-            () -> {
-              driver.getHID().setRumble(rumbleType, strength);
-              operator.getHID().setRumble(rumbleType, strength);
-            })
+    return Commands.runOnce(() -> driver.getHID().setRumble(rumbleType, strength))
         .andThen(Commands.waitSeconds(0.3))
-        .finallyDo(
-            () -> {
-              driver.getHID().setRumble(rumbleType, 0);
-              operator.getHID().setRumble(rumbleType, 0);
-            });
+        .finallyDo(() -> driver.getHID().setRumble(rumbleType, 0));
   }
+
 
   @Override
   public void close() {

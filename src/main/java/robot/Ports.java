@@ -2,7 +2,6 @@ package robot;
 
 public final class Ports {
   public static final class OI {
-    public static final int OPERATOR = 0;
     public static final int DRIVER = 2;
   }//I think we can delete the operator and use 0, but IDK
 
