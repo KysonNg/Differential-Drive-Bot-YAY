@@ -50,8 +50,12 @@ Drive drive = new Drive();
     // Configure logging with DataLogManager, Monologue, URCL, and FaultLogger
     DataLogManager.start();
     Monologue.setupMonologue(this, "/Robot", false, true);
-    addPeriodic(Monologue::updateAll, PERIOD.in(Seconds));
-    addPeriodic(FaultLogger::update, 2);
+    addPeriodic(Monologue::updateAll, kDefaultPeriod);
+    addPeriodic(FaultLogger::update, 1);
+//Originally the top one was 
+//Monologue.setupMonologue(this, "/Robot", false, true);
+//addPeriodic(Monologue::updateAll, PERIOD.in(Seconds));
+//addPeriodic(FaultLogger::update, 2);
 
     SmartDashboard.putData(CommandScheduler.getInstance());
     // Log PDH
