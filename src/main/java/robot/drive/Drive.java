@@ -24,7 +24,7 @@ import robot.Ports;
 import robot.Robot;
 import robot.drive.DriveConstants.FF;
 import robot.drive.DriveConstants.PID;
-
+import static edu.wpi.first.units.Units.*;
 
 
 
@@ -115,7 +115,7 @@ public class Drive extends SubsystemBase {
     driveSim.update(Constants.PERIOD.in(Seconds));
     leftEncoder.setPosition(driveSim.getLeftPositionMeters());
     rightEncoder.setPosition(driveSim.getRightPositionMeters());
-    }
+    } //I need to ask why Seconds is bugged. Must be because I didn't download Monologue yet.
 
 public Command drive(DoubleSupplier vLeft, DoubleSupplier vRight) {
     return run(() -> drive(vLeft.getAsDouble(), vRight.getAsDouble()));
