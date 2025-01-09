@@ -17,6 +17,8 @@ import lib.CommandRobot;
 import lib.FaultLogger;
 import monologue.Logged;
 import monologue.Monologue;
+import monologue.Annotations.Log;
+
 import org.littletonrobotics.urcl.URCL;
 import robot.Ports.OI;
 import robot.drive.Drive;

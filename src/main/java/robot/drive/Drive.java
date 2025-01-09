@@ -17,6 +17,7 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import robot.Constants;
@@ -29,6 +30,7 @@ import static edu.wpi.first.units.Units.*;
 
 
 public class Drive extends SubsystemBase {
+    private final Field2d field2d = new Field2d();
     private final DifferentialDriveOdometry odometry;
     private final CANSparkMax leftLeader = new CANSparkMax(Ports.Drive.LEFT_LEADER, MotorType.kBrushless);
     private final CANSparkMax leftFollower = new CANSparkMax(Ports.Drive.LEFT_FOLLOWER, MotorType.kBrushless);
@@ -77,6 +79,7 @@ public class Drive extends SubsystemBase {
   @Override 
   public void periodic() {
     updateOdometry(Robot.isReal() ? gyro.getRotation2d() :  driveSim.getHeading());
+    field2d.setRobotPose(pose());
   }
 
   public void updateOdometry(Rotation2d rotation) {
